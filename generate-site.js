@@ -7,6 +7,6 @@ const generateTeam = (team) => {
     // create functions for each type of employee that returns html data
     const generateManager  = manager => {
         console.log(manager);
-        let managerHTML = 
+        let managerHTML = ``
     }
 }
