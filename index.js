@@ -6,10 +6,10 @@ const genrateSite = require ("./src/generat-site.js");
 const fs = require ("fs");
 const path = require ("path");
 const OUTPUT_DIR = path.resolve(__dirname,"output");
-const outputpath = path.join(OUTPUT_DIR,"tem-html");
+const outputpath = path.join(OUTPUT_DIR,"team-html");
 const teamMembers = [];
 
-const promptmanager = () => {
+const promptManager = () => {
     return inquirer.prompt ([
         {
             type: "input",
@@ -107,7 +107,7 @@ const promptEngineer = () => {
                 if(engineerName){
                     return true;
                 }else {
-                    console.log("Please inter the name of the engineer!");
+                    console.log("Please enter the name of the engineer!");
                     return false;
                 }
             }
@@ -116,7 +116,7 @@ const promptEngineer = () => {
 
 {
     type: "input",
-    mane: "employeeId",
+    name: "employeeId",
     message: "enter your employe id(required)",
     validate: employeeId => {
         if(employeeId){
@@ -131,7 +131,7 @@ const promptEngineer = () => {
 
 {
     type: "input",
-    mane: "email",
+    name: "email",
     message: "enter your email(required)",
     validate: email => {
         if(email){
@@ -145,13 +145,13 @@ const promptEngineer = () => {
 },
 {
     type: "input",
-    mane: "github",
-    message: "enter your github(required)",
+    name: "githubUsername",
+    message: "enter your github user name.(required)",
     validate: github => {
         if(github){
             return true;
         } else {
-            console.log("please enter your github!");
+            console.log("please enter your github user name!");
             return false;
         }
     }
@@ -159,10 +159,92 @@ const promptEngineer = () => {
 }
 
 
-    ]).then(function(answer) {
+    ]).then(answer => {
         console.log(answer);
-        const engineer = new Engineer(answer.name, answer.employeeId, answer.email, answer.github);
+        const engineer = new Engineer(answer.name, answer.employeeId, answer.email, answer.githubUsername);
         teamMembers.push(engineer);
         promptMenu();
     })
 }
+
+const prompIntern = () => {
+    console.log("add a new Intern");
+
+    return inquirer.prompt([
+        {
+            type:"input",
+            name: "name",
+            message: "what is the name of the Intern ? (Required)",
+            validate:intername =>{
+                if(internName){
+                    return true;
+                }else {
+                    console.log("Please enter the name of the Intern!");
+                    return false;
+                }
+            }
+
+        },
+
+{
+    type: "input",
+    name: "employeeId",
+    message: "enter your employe id(required)",
+    validate: employeeId => {
+        if(employeeId){
+            return true;
+        } else {
+            console.log("please enter your employee id!");
+            return false;
+        }
+    }
+
+},
+
+{
+    type: "input",
+    name: "email",
+    message: "enter your email(required)",
+    validate: email => {
+        if(email){
+            return true;
+        } else {
+            console.log("please enter your email!");
+            return false;
+        }
+    }
+
+},
+{
+    type: "input",
+    name: "school",
+    message: "enter your school.(required)",
+    validate: school => {
+        if(school){
+            return true;
+        } else {
+            console.log("please enter your school name!");
+            return false;
+        }
+    }
+
+}
+
+
+    ]).then(answer => {
+        console.log(answer);
+        const intern = new Intern(answer.name, answer.employeeId, answer.email, answer.school);
+        teamMembers.push(intern);
+        promptMenu();
+    })
+};
+const buildTeam = () => {
+    console.log( "Finished building the Team!");
+
+    // The output directory
+    if(!fs.existsSync(OUTPUT_DIR)){
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputpath, genrateSite(teamMembers),"utf-8");
+}
+promptManager();
