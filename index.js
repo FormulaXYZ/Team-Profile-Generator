@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const Manager = require("./library/manager");
 const Engineer = require("./library/engineer");
 const Intern = require("./library/intern");
-const genrateSite = require ("./src/generat-site.js");
+const genrateSite = require ("./generate-site");
 const fs = require ("fs");
 const path = require ("path");
 const OUTPUT_DIR = path.resolve(__dirname,"output");
@@ -74,7 +74,7 @@ const promptManager = () => {
 
 }
 const promptMenu = () => {
-    return requirer.prompt([
+    return inquirer.prompt([
         {
             type: "list",
             name: "menu",
@@ -167,7 +167,7 @@ const promptEngineer = () => {
     })
 }
 
-const prompIntern = () => {
+const promptIntern = () => {
     console.log("add a new Intern");
 
     return inquirer.prompt([
@@ -175,7 +175,7 @@ const prompIntern = () => {
             type:"input",
             name: "name",
             message: "what is the name of the Intern ? (Required)",
-            validate:intername =>{
+            validate:internName =>{
                 if(internName){
                     return true;
                 }else {
