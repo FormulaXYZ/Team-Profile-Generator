@@ -25,8 +25,7 @@ const generateTeam = (team) => {
 const generateEngineer  = engineer => {
 console.log(engineer);
 let engineerHTML =`
-</section>
-    <section class="card">
+<section class="card">
       <div class="card-head">
         <header>${engineer.getName()}</header>
         <ul class="list">
@@ -68,7 +67,7 @@ console.log(intern);
       }
       if (team[i].getStatus() === "Engineer"){
         generateEngineer(team[i]);
-        {
+      }
           if (team[i].getStatus() === "Intern"){
             generateIntern(team[i]);
           }

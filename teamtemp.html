@@ -17,41 +17,39 @@
 
     <main>
       <section  class="card">
-    <div class="card-head">
-        <header>Thomas</header>
-        <ul class="list">
-          <li class="id">ID:1</li>
-          <li class="email">email:<a href="email.com"></a></li>
-          <li class="office">office number:100</li>
-        </ul>
-        <i class="my-class"></i>Manager</div>
-        <p></p>
-      </section>
-      <section class="card">
         <div class="card-head">
-          <header>Sammy</header>
-          <ul class="list">
-            <li class="id">ID:2</li>
-            <li class="email">email:<a href="email.com"></a></li>
-            <li class="github">Github username:</li>
-          </ul>
-          <i class="my-class"></i>Engineer</div>
-        
-        <p></p>
-      </section>
-      <section class="card">
-        <div class="card-head">
-          <header>Mimi</header>
-          <ul class="list">
-            <li class="id">ID:3</li>
-            <li class="email">email:<a href="email.com"></a></li>
-            <li class="school">school Berkeley</li>
-          </ul>
-          <i class="my-class"></i>intern</div>
-        
-        
-        <p></p>
-      </section>
+            <header>${manager.getName()}</header>
+            <ul class="list">
+              <li class="id">ID${manager.getId()}</li>
+              <li class="email">email:<a href="${manager.getEmail()}">${manager.getEmail()}</a></li>
+              <li class="office">office number${manager.getOfficeNumber()}</li>
+            </ul>
+            <i class="my-class"></i>Manager</div>
+            <p></p>
+          </section>
+          <section class="card">
+            <div class="card-head">
+              <header>${engineer.getName()}</header>
+              <ul class="list">
+                <li class="id">ID${engineer.getId()}</li>
+                <li class="email">email:<a href="${engineer.getEmail()}">${engineer.getEmail()}</li>
+                <li class="github">Github username::<a href="${engineer.getGithub()}">${engineer.getGithub()}</li>
+              </ul>
+              <i class="my-class"></i>Engineer</div>
+            
+            <p></p>
+          </section>
+          <section  class="card">
+            <div class="card-head">
+                <header>${intern.getName()}</header>
+                <ul class="list">
+                  <li class="id">ID${intern.getId()}</li>
+                  <li class="email">email:<a href="${intern.getEmail()}">${manager.getEmail()}</a></li>
+                  <li class="office">school:${intern.school()}</li>
+                </ul>
+                <i class="my-class"></i>intern</div>
+                <p></p>
+              </section>
       
     </main>
   </body>
