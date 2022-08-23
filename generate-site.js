@@ -19,7 +19,8 @@ const generateTeam = (team) => {
       <p></p>
     </section>
       `
-      return managerHTML;
+      html.push(managerHTML);
+      return;
   }
 
 const generateEngineer  = engineer => {
@@ -38,9 +39,10 @@ let engineerHTML =`
       <p></p>
     </section>`
 
+    html.push(engineerHTML);
     return engineerHTML;
 }
-const generatIntern = intern => {
+const generateIntern = intern => {
 console.log(intern); 
       let internHTML = `
       <section  class="card">
@@ -48,31 +50,54 @@ console.log(intern);
       <header>${intern.getName()}</header>
       <ul class="list">
         <li class="id">ID${intern.getId()}</li>
-        <li class="email">email:<a href="${intern.getEmail()}">${manager.getEmail()}</a></li>
-        <li class="office">school:${intern.school()}</li>
+        <li class="email">email:<a href="${intern.getEmail()}">${intern.getEmail()}</a></li>
+        <li class="office">school:${intern.getSchool()}</li>
       </ul>
       <i class="my-class"></i>intern</div>
       <p></p>
     </section>
       `
-  
-      return internHTML;
+      html.push(internHTML);
+      return;
     }
 
     // let's create loop for all employees here
      
     for(let i=0; i < team.length; i ++){
-      if (team[i].getStatus() === "Manager"){
+      if (team[i].getStatus() === "manager"){
         generateManager(team[i]);
       }
-      if (team[i].getStatus() === "Engineer"){
+      if (team[i].getStatus() === "engineer"){
         generateEngineer(team[i]);
       }
-          if (team[i].getStatus() === "Intern"){
+          if (team[i].getStatus() === "intern"){
             generateIntern(team[i]);
           }
             }       
-            return html.join('');    
+            return `!DOCTYPE html>
+            <html>
+              <head>
+                <title>Team Profile grnerator</title>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="stylesheet" href="style.css" />
+              </head>
+              <body>
+                <header>
+                  <h1>The Team
+                          </h1>
+                  <p>
+                    The Best Team 
+                  </p>
+                </header>
+            
+                <main>
+                ${html.join("")}
+                  
+                </main>
+              </body>
+            </html>
+            `    
  }                                   
 module.exports = generateTeam
 
