@@ -40,7 +40,7 @@ const promptManager = () => {
         {
             type: "input",
             name: "email",
-            message: "Enter your emploee email address (Required)",
+            message: "Enter your employee email address (Required)",
             validate: email => {
                 if (email){
                     return true;

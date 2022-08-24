@@ -1,5 +1,12 @@
 #   Team Profile Generator
 
+[Link](https://drive.google.com/file/d/1GrKjR8z00kU9AxcHntNhXOT8Qma9nWvx/view)
+
+![Link](./images/team1.png)
+![Link](./images/team2.png)
+![Link](./images/team3.png)
+![Link](./images/team4.png)
+
 ## Discription
 
   This is  a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. and can test code if it passes the test.
